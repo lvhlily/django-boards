@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Start a new Topic{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Boards</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'board_topics' board.pk %}">{{ board.name }}</a></li>
+    <li class="breadcrumb-item active">New topic</li>
+{% endblock %}
+
+{% block content %}
+<form method="post" novalidate>
+    <!-- CSRF Token (Cross-Site Request Forgery Token). It is a security measure to avoid external sites or applications to submit data to our application -->
+    {% csrf_token %}
+    {% include 'includes/form.html' %}  
+    <button type="submit" class="btn btn-success">Post</button>
+</form>
+{% endblock %}
